@@ -1,0 +1,1 @@
+interface Plugin {	val project: String	val version: String}
