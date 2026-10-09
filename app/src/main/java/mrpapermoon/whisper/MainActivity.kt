@@ -121,7 +121,7 @@ class MainActivity : ComponentActivity() {
 						val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
 							statusField.value = throwable.message ?: "Unknown error"
 						}
-						val client = MeshClient.startService(context, uuid, coroutineContext = exceptionHandler)
+						val client = MeshClient.initService(context, uuid, coroutineContext = exceptionHandler)
 						statusField.value = "Started to collecting rumors"
 						meshClient = client
 						client.collect { message ->

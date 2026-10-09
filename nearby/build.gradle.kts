@@ -28,11 +28,8 @@ kotlin {
 }
 
 dependencies {
-	implementation(project(":utils"))
+	implementation(project(":tools"))
 
-	loggingDependency()
 	dependency(Google.PlayServices.PlayServicesNearby)
-	dependency(JetBrains.Kotlinx.Coroutines.Core)
-
 	coreLibraryDesugaring(Android.Tools.DesugarJdkLibs.dependencyNotation)
 }

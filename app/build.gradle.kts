@@ -27,8 +27,6 @@ android {
 	compileOptions {
 		sourceCompatibility = JavaVersion.VERSION_11
 		targetCompatibility = JavaVersion.VERSION_11
-
-		isCoreLibraryDesugaringEnabled = true
 	}
 	buildFeatures {
 		compose = true
@@ -36,11 +34,10 @@ android {
 }
 
 dependencies {
-	implementation(project(":nearby"))
-	coreLibraryDesugaring(Android.Tools.DesugarJdkLibs.dependencyNotation)
+	implementation(project(":mesh"))
+	implementation(project(":tools"))
 
 	dependency(AndroidX.Activity.ActivityCompose)
-	dependency(AndroidX.Core.CoreKtx)
 	dependency(AndroidX.Lifecycle.LifecycleRuntimeKtx)
 
 	bom(AndroidX.Compose) {

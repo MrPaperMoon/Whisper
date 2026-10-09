@@ -2,25 +2,29 @@
 
 interface Google {
 
-    interface Android {
-        enum class Material : Dependency {
-            Material {
-                override val project: String get() = "material"
-            },
-            ;
+	interface Android {
+		enum class Material : Dependency {
+			Material {
+				override val project: String get() = "material"
+			},
+			;
 
-            override val group: String get() = "com.google.android.material"
-            override val version: String get() = Version.MATERIAL
-        }
-    }
+			override val group: String get() = "com.google.android.material"
+			override val version: String get() = Version.MATERIAL
+		}
+	}
 
-    enum class PlayServices : Dependency {
-        PlayServicesNearby {
-            override val project: String get() = "play-services-nearby"
-        },
-        ;
+	enum class PlayServices : Dependency {
+		PlayServicesNearby {
+			override val project: String get() = "play-services-nearby"
+			override val version: String get() = Version.PLAY_SERVICES_NEARBY
+		},
+		PlayServicesTasks {
+			override val project: String get() = "play-services-tasks"
+			override val version: String get() = Version.PLAY_SERVICES_TASKS
+		}
+		;
 
-        override val group: String get() = "com.google.android.gms"
-        override val version: String get() = Version.PLAY_SERVICES
-    }
+		override val group: String get() = "com.google.android.gms"
+	}
 }

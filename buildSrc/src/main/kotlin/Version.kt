@@ -18,6 +18,7 @@ object Version {
 	const val KOTLIN_LOGGING_JVM = "7.0.3"
 	const val LIFECYCLE = "2.6.1"
 	const val MATERIAL = "1.10.0"
-	const val PLAY_SERVICES = "19.4.0"
+	const val PLAY_SERVICES_NEARBY = "19.4.0"
+	const val PLAY_SERVICES_TASKS = "18.2.0"
 	const val SLF4J_SIMPLE = "1.7.36"
 }

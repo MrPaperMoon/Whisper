@@ -16,7 +16,10 @@ plugins {
 }
 
 rootProject.name = "Whisper"
+
 include(":app")
 include(":entity")
+include(":mesh")
 include(":nearby")
+include(":tools")
 include(":utils")
