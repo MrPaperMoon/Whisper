@@ -1,1 +1,0 @@
-package mrpapermoon.whisper.mesh.transformationobject MessageParser {}

@@ -1,10 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+	<color name="primary">@color/primary_50</color>
+	<color name="primary_50">#eeebde</color>
+	<color name="primary_100">#d8cda1</color>
+	<color name="primary_200">#bfac5c</color>
+	<color name="primary_300">#a68f0b</color>
+	<color name="primary_400">#987b00</color>
+	<color name="primary_500">#8a6800</color>
+	<color name="primary_600">#8c5e00</color>
+	<color name="primary_700">#8d5000</color>
+	<color name="primary_800">#8c4000</color>
+	<color name="primary_900">#8a1e00</color>
+
+	<color name="iconColor">@color/primary_200</color>
+<!-- Shades of #eeebde
+#eeebde
+#d6d3c7
+#bebcb1
+#a6a49b
+#8e8d85
+#77756f
+#5f5e58
+#474642
+#2f2f2c
+#171716
+#000000
+-->
+	<color name="colorOnPrimary">#171716</color>
+<!--	Tints of #eeebde
+#eeebde
+#efede1
+#f1efe4
+#f3f1e7
+#f4f3eb
+#f6f5ee
+#f8f7f1
+#f9f9f5
+#fbfbf8
+#fdfdfb
+#ffffff
+-->
+
+	<color name="primary_triadic_1">#deeeeb</color>
+	<color name="primary_triadic_2">#ebdeee</color>
+	<color name="primary_analogous_1">#e9eede</color>
+	<color name="primary_analogous_2">#eee3de</color>
+	<color name="primary_complementary">#dee1ee</color>
+
+	<color name="accent">@color/accent_400</color>
+	<color name="accent_50">#fcf2e1</color>
+	<color name="accent_100">#f9ddb5</color>
+	<color name="accent_200">#f5c786</color>
+	<color name="accent_300">#f1b058</color>
+	<color name="accent_400">#eea03a</color>
+	<color name="accent_500">#eb9128</color>
+	<color name="accent_600">#e68626</color>
+	<color name="accent_700">#e07823</color>
+	<color name="accent_800">#d86a20</color>
+	<color name="accent_900">#ce521a</color>
+
+<!--	Shades of #eea03a
+#eea03a
+#d69034
+#be802e
+#a67028
+#8e6022
+#77501d
+#5f4017
+#473011
+#2f200b
+#171005
+#000000
+-->
+	<color name="colorOnAccent">#473011</color>
+<!--	Tints of #eea03a
+#eea03a
+#efa94d
+#f1b361
+#f3bc75
+#f4c688
+#f6cf9c
+#f8d9b0
+#f9e2c3
+#fbecd7
+#fdf5eb
+#ffffff
+-->
+
+	<color name="accent_triadic_1">#3aeea0</color>
+	<color name="accent_triadic_2">#a03aee</color>
+	<color name="accent_analogous_1">#e2ee3a</color>
+	<color name="accent_analogous_2">#ee463a</color>
+	<color name="accent_complementary">#3a88ee</color>
 </resources>

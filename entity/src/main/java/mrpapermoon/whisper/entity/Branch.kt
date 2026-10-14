@@ -1,1 +1,1 @@
-package mrpapermoon.whisper.entity@JvmInlinevalue class Branch(val history: LinkedHashMap<Long, Message>)
+package mrpapermoon.whisper.entitydata class Branch(val whisperer: Whisperer, val rumors: List<Whisper>)

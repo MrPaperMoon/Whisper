@@ -4,6 +4,8 @@ plugins {
 	notate(Android.Library)
 	notate(JetBrains.Kotlin.PluginCompose)
 	notate(JetBrains.Kotlin.Jvm)
+	notate(JetBrains.Kotlin.PluginSerialization)
+	notate(Ksp)
 }
 
 allprojects {

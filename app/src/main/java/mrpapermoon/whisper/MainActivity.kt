@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.os.SystemClock
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
@@ -20,13 +21,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.Send
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Icon
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -38,27 +37,39 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
-import mrpapermoon.whisper.service.MeshClient
+import mrpapermoon.whisper.entity.Whisper
+import mrpapermoon.whisper.entity.Whisperer
+import mrpapermoon.whisper.mesh.MeshNetworkManager
 import mrpapermoon.whisper.ui.theme.WhisperTheme
+import kotlin.time.Duration.Companion.seconds
 import kotlin.uuid.Uuid
 
 class MainActivity : ComponentActivity() {
 
 	override fun onCreate(savedInstanceState: Bundle?) {
+		val splashScreen = installSplashScreen()
 		super.onCreate(savedInstanceState)
 		enableEdgeToEdge()
+
+		val startTime = SystemClock.elapsedRealtime()
+		splashScreen.setKeepOnScreenCondition {
+			SystemClock.elapsedRealtime() - startTime >= 2.seconds.inWholeMilliseconds
+		}
 
 		setContent {
 			WhisperTheme {
 				val uuid = remember { Uuid.random().toHexDashString() }
 				val context = LocalContext.current
 
-				var meshClient: MeshClient? by remember { mutableStateOf(null) }
+				var meshNetworkManager: MeshNetworkManager? by remember { mutableStateOf(null) }
 				var hasAllPermissions: Boolean by remember { mutableStateOf(false) }
 
 				val statusField = remember { mutableStateOf("Initializing...") }
@@ -111,7 +122,7 @@ class MainActivity : ComponentActivity() {
 							}
 						}
 
-						PingButton(meshClient, statusField)
+						PingButton(meshNetworkManager, uuid, statusField)
 					}
 				}
 
@@ -121,14 +132,15 @@ class MainActivity : ComponentActivity() {
 						val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
 							statusField.value = throwable.message ?: "Unknown error"
 						}
-						val client = MeshClient.initService(context, uuid, coroutineContext = exceptionHandler)
-						statusField.value = "Started to collecting rumors"
-						meshClient = client
-						client.collect { message ->
-							chatHistory.add(String(message))
-						}
-					} else {
-						meshClient?.stopService()
+						val repository = MeshNetworkManager.create(context, exceptionHandler, uuid)
+						statusField.value = "Started collecting rumors"
+						meshNetworkManager = repository
+//						repository.rumorsHistory().collect { rumors ->
+//							chatHistory.clear()
+//							chatHistory.addAll(rumors.map { whisper ->
+//								"${whisper.whisperer.name}: ${whisper.rumor}"
+//							})
+//						}
 					}
 				}
 
@@ -144,8 +156,7 @@ class MainActivity : ComponentActivity() {
 
 				DisposableEffect(Unit) {
 					onDispose {
-						meshClient?.stopService()
-						meshClient = null
+						meshNetworkManager = null
 					}
 				}
 			}
@@ -154,7 +165,8 @@ class MainActivity : ComponentActivity() {
 
 	@Composable
 	private fun PingButton(
-		meshClient: MeshClient?,
+		meshNetworkManager: MeshNetworkManager?,
+		uuid: String,
 		networkStatus: MutableState<String>,
 	) {
 		val scope = rememberCoroutineScope()
@@ -164,20 +176,25 @@ class MainActivity : ComponentActivity() {
 				.height(98.dp)
 				.padding(horizontal = 16.dp),
 			contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp),
-			enabled = !sendIsInProgress && meshClient != null,
+			enabled = !sendIsInProgress && meshNetworkManager != null,
 			onClick = {
 				sendIsInProgress = true
 				scope.launch {
 					val status = networkStatus.value
 					networkStatus.value = "Sending message..."
-					meshClient!!.sendMessage("Ping".toByteArray())
+					val whisper = Whisper(
+						hash = System.currentTimeMillis(),
+						whisperer = Whisperer(id = uuid, karma = 0, name = uuid, color = 0),
+						rumor = "Ping"
+					)
+//					meshNetworkManager!!.whisper(whisper)
 					networkStatus.value = status
 					sendIsInProgress = false
 				}
 			}
 		) {
 			Icon(
-				Icons.AutoMirrored.Filled.Send,
+				ImageVector.vectorResource(R.drawable.outline_cell_tower_24),
 				contentDescription = null,
 				modifier = Modifier.size(ButtonDefaults.IconSize)
 			)

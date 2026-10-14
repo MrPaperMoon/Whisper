@@ -2,18 +2,6 @@
 
 interface Google {
 
-	interface Android {
-		enum class Material : Dependency {
-			Material {
-				override val project: String get() = "material"
-			},
-			;
-
-			override val group: String get() = "com.google.android.material"
-			override val version: String get() = Version.MATERIAL
-		}
-	}
-
 	enum class PlayServices : Dependency {
 		PlayServicesNearby {
 			override val project: String get() = "play-services-nearby"
@@ -26,5 +14,18 @@ interface Google {
 		;
 
 		override val group: String get() = "com.google.android.gms"
+	}
+
+	enum class Protobuf : Dependency {
+		JavaLite {
+			override val project: String get() = "protobuf-javalite"
+		},
+		KotlinLite {
+			override val project: String get() = "protobuf-kotlin-lite"
+		},
+		;
+
+		override val group: String get() = "com.google.protobuf"
+		override val version: String get() = Version.PROTOBUF
 	}
 }

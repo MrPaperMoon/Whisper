@@ -2,6 +2,8 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
 	apply(Android.Library)
+	apply(Ksp)
+	apply(JetBrains.Kotlin.PluginSerialization)
 }
 
 android {
@@ -24,6 +26,11 @@ android {
 kotlin {
 	compilerOptions {
 		jvmTarget = JvmTarget.JVM_11
+
+		freeCompilerArgs.addAll(
+			"-opt-in=kotlinx.serialization.InternalSerializationApi",
+			"-opt-in=kotlinx.serialization.ExperimentalSerializationApi"
+		)
 	}
 }
 
@@ -33,4 +40,11 @@ dependencies {
 
 	implementation(project(":nearby"))
 	coreLibraryDesugaring(Android.Tools.DesugarJdkLibs.dependencyNotation)
+
+	dependency(AndroidX.Room.Runtime)
+	dependency(AndroidX.Room.Ktx)
+	ksp(AndroidX.Room.Compiler.dependencyNotation)
+
+	dependency(JetBrains.Kotlinx.Serialization.Protobuf)
+	dependency(JetBrains.Kotlinx.Serialization.Core)
 }

@@ -27,6 +27,8 @@ android {
 	compileOptions {
 		sourceCompatibility = JavaVersion.VERSION_11
 		targetCompatibility = JavaVersion.VERSION_11
+
+		isCoreLibraryDesugaringEnabled = true
 	}
 	buildFeatures {
 		compose = true
@@ -35,13 +37,16 @@ android {
 
 dependencies {
 	implementation(project(":mesh"))
+	implementation(project(":entity"))
 	implementation(project(":tools"))
+	coreLibraryDesugaring(Android.Tools.DesugarJdkLibs.dependencyNotation)
 
 	dependency(AndroidX.Activity.ActivityCompose)
 	dependency(AndroidX.Lifecycle.LifecycleRuntimeKtx)
+	dependency(AndroidX.Core.Splashscreen)
 
 	bom(AndroidX.Compose) {
-		attach(AndroidX.Compose.Material3.Material3)
+		attach(AndroidX.Compose.Material.Material)
 		attach(AndroidX.Compose.Ui.Ui)
 		attach(AndroidX.Compose.Ui.UiTooling)
 		attach(AndroidX.Compose.Ui.UiToolingPreview)
