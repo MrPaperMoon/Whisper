@@ -15,3 +15,17 @@ object JavaLibrary : Plugin {
 	override val version: String
 		get() = throw IllegalStateException("Java library has no version")
 }
+
+object Ksp : Plugin {
+	override val project: String
+		get() = "com.google.devtools.ksp"
+	override val version: String
+		get() = Version.KSP
+}
+
+object Kapt : Plugin {
+	override val project: String
+		get() = "kotlin-kapt"
+	override val version: String
+		get() = throw IllegalStateException("Kapt has no version")
+}

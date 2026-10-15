@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.Whisper" parent="android:Theme.Material.Light.NoActionBar" />
+	<style name="Theme.Whisper" parent="android:Theme.Material.Light.NoActionBar" />
+
+	<style name="Theme.Whisper.Splash" parent="Theme.SplashScreen">
+		<item name="windowSplashScreenBackground">#EEA03A</item>
+		<item name="windowSplashScreenAnimatedIcon">@drawable/outline_bring_your_own_ip_24</item>
+		<item name="postSplashScreenTheme">@style/Theme.Whisper</item>
+	</style>
 </resources>

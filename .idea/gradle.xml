@@ -23,7 +23,9 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/entity" />
+            <option value="$PROJECT_DIR$/mesh" />
             <option value="$PROJECT_DIR$/nearby" />
+            <option value="$PROJECT_DIR$/tools" />
             <option value="$PROJECT_DIR$/utils" />
           </set>
         </option>

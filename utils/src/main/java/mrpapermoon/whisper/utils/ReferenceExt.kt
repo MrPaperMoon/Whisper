@@ -1,6 +1,6 @@
 @file:Suppress("NOTHING_TO_INLINE")
 
-package mrpapermoon.utils
+package mrpapermoon.whisper.utils
 
 import java.lang.ref.Reference
 import kotlin.reflect.KProperty

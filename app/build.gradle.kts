@@ -36,15 +36,17 @@ android {
 }
 
 dependencies {
-	implementation(project(":nearby"))
+	implementation(project(":mesh"))
+	implementation(project(":entity"))
+	implementation(project(":tools"))
 	coreLibraryDesugaring(Android.Tools.DesugarJdkLibs.dependencyNotation)
 
 	dependency(AndroidX.Activity.ActivityCompose)
-	dependency(AndroidX.Core.CoreKtx)
 	dependency(AndroidX.Lifecycle.LifecycleRuntimeKtx)
+	dependency(AndroidX.Core.Splashscreen)
 
 	bom(AndroidX.Compose) {
-		attach(AndroidX.Compose.Material3.Material3)
+		attach(AndroidX.Compose.Material.Material)
 		attach(AndroidX.Compose.Ui.Ui)
 		attach(AndroidX.Compose.Ui.UiTooling)
 		attach(AndroidX.Compose.Ui.UiToolingPreview)

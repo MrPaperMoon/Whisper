@@ -11,6 +11,10 @@ interface JetBrains {
             override val project: String
                 get() = "org.jetbrains.kotlin.jvm"
         },
+        PluginSerialization {
+            override val project: String
+                get() = "org.jetbrains.kotlin.plugin.serialization"
+        },
         ;
         override val version: String
             get() = Version.KOTLIN
@@ -28,6 +32,22 @@ interface JetBrains {
 
             override val group: String get() = "org.jetbrains.kotlinx"
             override val version: String get() = Version.COROUTINES
+        }
+
+        enum class Serialization : Dependency {
+            Protobuf {
+                override val project: String get() = "kotlinx-serialization-protobuf"
+            },
+            Json {
+                override val project: String get() = "kotlinx-serialization-json"
+            },
+            Core {
+                override val project: String get() = "kotlinx-serialization-core"
+            },
+            ;
+
+            override val group: String get() = "org.jetbrains.kotlinx"
+            override val version: String get() = Version.KOTLINX_SERIALIZATION
         }
     }
 }

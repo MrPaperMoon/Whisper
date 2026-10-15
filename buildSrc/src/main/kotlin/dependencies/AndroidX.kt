@@ -22,7 +22,7 @@ interface AndroidX {
 		override val version: String get() = Version.APPCOMPAT
 	}
 
-	interface Compose: Dependency {
+	interface Compose : Dependency {
 
 		enum class Ui : Compose {
 			Ui {
@@ -49,6 +49,15 @@ interface AndroidX {
 			override val group: String get() = "androidx.compose.ui"
 		}
 
+		enum class Material : Compose {
+			Material {
+				override val project: String get() = "material"
+			},
+			;
+
+			override val group: String get() = "androidx.compose.material"
+		}
+
 		enum class Material3 : Compose {
 			Material3 {
 				override val project: String get() = "material3"
@@ -61,7 +70,7 @@ interface AndroidX {
 		override val group: String get() = "androidx.compose"
 		override val version: String get() = Version.COMPOSE_BOM
 
-		companion object: Compose {
+		companion object : Compose {
 			override val project: String get() = "compose-bom"
 		}
 	}
@@ -69,11 +78,15 @@ interface AndroidX {
 	enum class Core : Dependency {
 		CoreKtx {
 			override val project: String get() = "core-ktx"
+			override val version: String get() = Version.CORE_KTX
+		},
+		Splashscreen {
+			override val project: String get() = "core-splashscreen"
+			override val version: String get() = Version.CORE_SPLASH
 		},
 		;
 
 		override val group: String get() = "androidx.core"
-		override val version: String get() = Version.CORE
 	}
 
 	enum class Lifecycle : Dependency {
@@ -84,6 +97,22 @@ interface AndroidX {
 
 		override val group: String get() = "androidx.lifecycle"
 		override val version: String get() = Version.LIFECYCLE
+	}
+
+	enum class Room : Dependency {
+		Runtime {
+			override val project: String get() = "room-runtime"
+		},
+		Ktx {
+			override val project: String get() = "room-ktx"
+		},
+		Compiler {
+			override val project: String get() = "room-compiler"
+		},
+		;
+
+		override val group: String get() = "androidx.room"
+		override val version: String get() = Version.ROOM
 	}
 
 	interface Test {

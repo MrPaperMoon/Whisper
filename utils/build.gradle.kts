@@ -13,3 +13,7 @@ kotlin {
         jvmTarget = JvmTarget.JVM_11
     }
 }
+
+dependencies {
+	exportDependency(JetBrains.Kotlinx.Coroutines.Core)
+}

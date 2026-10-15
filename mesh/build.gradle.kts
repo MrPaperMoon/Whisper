@@ -1,0 +1,50 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
+plugins {
+	apply(Android.Library)
+	apply(Ksp)
+	apply(JetBrains.Kotlin.PluginSerialization)
+}
+
+android {
+	namespace = "mrpapermoon.whisper.mesh"
+	compileSdk {
+		version = release(Version.COMPILE_SDK)
+	}
+
+	defaultConfig {
+		minSdk = Version.MIN_SDK
+	}
+	compileOptions {
+		sourceCompatibility = JavaVersion.VERSION_11
+		targetCompatibility = JavaVersion.VERSION_11
+
+		isCoreLibraryDesugaringEnabled = true
+	}
+}
+
+kotlin {
+	compilerOptions {
+		jvmTarget = JvmTarget.JVM_11
+
+		freeCompilerArgs.addAll(
+			"-opt-in=kotlinx.serialization.InternalSerializationApi",
+			"-opt-in=kotlinx.serialization.ExperimentalSerializationApi"
+		)
+	}
+}
+
+dependencies {
+	implementation(project(":entity"))
+	implementation(project(":tools"))
+
+	implementation(project(":nearby"))
+	coreLibraryDesugaring(Android.Tools.DesugarJdkLibs.dependencyNotation)
+
+	dependency(AndroidX.Room.Runtime)
+	dependency(AndroidX.Room.Ktx)
+	ksp(AndroidX.Room.Compiler.dependencyNotation)
+
+	dependency(JetBrains.Kotlinx.Serialization.Protobuf)
+	dependency(JetBrains.Kotlinx.Serialization.Core)
+}
