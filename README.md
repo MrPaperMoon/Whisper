@@ -1,6 +1,5 @@
 # Whisper
-
-![Project Status: WIP](https://shields.io)
+![Project Status: WIP](https://img.shields.io/badge/status-WIP-yellow)
 
 Whisper is an decentralized mesh-networking platform based on offline features like bluetooth and wi-fi. Designed to give people a anonymous way to express themselves. By chaining local Bluetooth connections, Whisper routes messages device-to-device, completely bypassing internet firewalls, cellular blackouts, and centralized surveillance.
 
