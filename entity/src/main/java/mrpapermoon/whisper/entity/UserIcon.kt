@@ -1,0 +1,1 @@
+package mrpapermoon.whisper.entityenum class UserIcon {	EAR,}

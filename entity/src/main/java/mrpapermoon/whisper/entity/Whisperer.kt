@@ -1,1 +1,1 @@
-package mrpapermoon.whisper.entitydata class Whisperer(val id: String, val karma: Int, val name: String, val color: Int)
+package mrpapermoon.whisper.entitydata class Whisperer(	val id: String,	val karma: Int,	val name: String,	val color: Int,	val icon: UserIcon,)

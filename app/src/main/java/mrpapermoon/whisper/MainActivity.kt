@@ -45,8 +45,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
-import mrpapermoon.whisper.entity.Whisper
-import mrpapermoon.whisper.entity.Whisperer
 import mrpapermoon.whisper.mesh.MeshNetworkManager
 import mrpapermoon.whisper.ui.theme.WhisperTheme
 import kotlin.time.Duration.Companion.seconds
@@ -182,11 +180,6 @@ class MainActivity : ComponentActivity() {
 				scope.launch {
 					val status = networkStatus.value
 					networkStatus.value = "Sending message..."
-					val whisper = Whisper(
-						hash = System.currentTimeMillis(),
-						whisperer = Whisperer(id = uuid, karma = 0, name = uuid, color = 0),
-						rumor = "Ping"
-					)
 //					meshNetworkManager!!.whisper(whisper)
 					networkStatus.value = status
 					sendIsInProgress = false
