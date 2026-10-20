@@ -5,7 +5,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import mrpapermoon.whisper.R
 
-object Colors {
+object WhisperColors {
 
 	//region Theme colors
 	val primary: Color
@@ -116,7 +116,6 @@ object Colors {
 	//endregion
 
 	//region Other colors
-	val iconColor: Color
-		@Composable get() = colorResource(id = R.color.iconColor)
+
 	//endregion
 }
