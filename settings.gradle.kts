@@ -18,6 +18,7 @@ plugins {
 rootProject.name = "Whisper"
 
 include(":app")
+include(":contacts")
 include(":entity")
 include(":mesh")
 include(":nearby")

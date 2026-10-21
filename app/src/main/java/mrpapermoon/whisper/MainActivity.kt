@@ -130,7 +130,13 @@ class MainActivity : ComponentActivity() {
 						val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
 							statusField.value = throwable.message ?: "Unknown error"
 						}
-						val repository = MeshNetworkManager.create(context, exceptionHandler, uuid)
+						val repository = MeshNetworkManager.create(
+							byteArrayOf(),
+							context,
+							exceptionHandler,
+							"Name",
+							uuid,
+						)
 						statusField.value = "Started collecting rumors"
 						meshNetworkManager = repository
 //						repository.rumorsHistory().collect { rumors ->

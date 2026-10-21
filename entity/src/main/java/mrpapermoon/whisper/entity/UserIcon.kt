@@ -1,1 +1,1 @@
-package mrpapermoon.whisper.entityenum class UserIcon {	EAR,}
+package mrpapermoon.whisper.entityenum class UserIcon {	EAR,	VOICE,	TOWER,	IP,}
