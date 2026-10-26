@@ -115,6 +115,26 @@ interface AndroidX {
 		override val version: String get() = Version.ROOM
 	}
 
+	enum class Hilt: Dependency {
+		Compose {
+			override val project: String get() = "hilt-navigation-compose"
+			override val version: String get() = Version.HILT_COMPOSE
+		},
+		;
+
+		override val group: String get() = "androidx.hilt"
+	}
+
+	enum class Navigation : Dependency {
+		Compose {
+			override val project: String get() = "navigation-compose"
+		},
+		;
+
+		override val group: String get() = "androidx.navigation"
+		override val version: String get() = Version.NAVIGATION
+	}
+
 	interface Test {
 		object Ext : Dependency {
 			override val group: String

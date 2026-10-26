@@ -11,18 +11,18 @@ fun WhisperTheme(
 	content: @Composable () -> Unit
 ) {
 	val lightColors = lightColors(
-		primary = Colors.primary_400,
-		primaryVariant = Colors.primary_600,
-		secondary = Colors.accent_200,
-		secondaryVariant = Colors.accent_800,
-		background = Colors.primary,
-		surface = Colors.primary_100,
-		error = Colors.primary_900,
-		onPrimary = Colors.colorOnPrimary,
-		onSecondary = Colors.colorOnAccent,
-		onBackground = Colors.colorOnPrimary,
-		onSurface = Colors.colorOnPrimary,
-		onError = Colors.primary,
+		primary = WhisperColors.primary_400,
+		primaryVariant = WhisperColors.primary_600,
+		secondary = WhisperColors.accent_200,
+		secondaryVariant = WhisperColors.accent_800,
+		background = WhisperColors.primary,
+		surface = WhisperColors.primary_100,
+		error = WhisperColors.primary_900,
+		onPrimary = WhisperColors.colorOnPrimary,
+		onSecondary = WhisperColors.colorOnAccent,
+		onBackground = WhisperColors.colorOnPrimary,
+		onSurface = WhisperColors.colorOnPrimary,
+		onError = WhisperColors.primary,
 	)
 
 	MaterialTheme(

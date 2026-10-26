@@ -1,5 +1,7 @@
 plugins {
 	apply(Android.Application)
+	apply(Google.HiltPlugin)
+	apply(Google.Ksp)
 	apply(JetBrains.Kotlin.PluginCompose)
 }
 
@@ -27,23 +29,29 @@ android {
 	compileOptions {
 		sourceCompatibility = JavaVersion.VERSION_11
 		targetCompatibility = JavaVersion.VERSION_11
-
-		isCoreLibraryDesugaringEnabled = true
 	}
 	buildFeatures {
 		compose = true
 	}
 }
 
+ksp {
+	arg("dagger.fastInit", "enabled")
+}
+
 dependencies {
-	implementation(project(":mesh"))
+	implementation(project(":actors"))
 	implementation(project(":entity"))
 	implementation(project(":tools"))
-	coreLibraryDesugaring(Android.Tools.DesugarJdkLibs.dependencyNotation)
+
+	dependency(Google.Hilt.Android)
+	ksp(Google.Hilt.Compiler.dependencyNotation)
 
 	dependency(AndroidX.Activity.ActivityCompose)
-	dependency(AndroidX.Lifecycle.LifecycleRuntimeKtx)
 	dependency(AndroidX.Core.Splashscreen)
+	dependency(AndroidX.Hilt.Compose)
+	dependency(AndroidX.Lifecycle.LifecycleRuntimeKtx)
+	dependency(AndroidX.Navigation.Compose)
 
 	bom(AndroidX.Compose) {
 		attach(AndroidX.Compose.Material.Material)

@@ -2,6 +2,31 @@
 
 interface Google {
 
+	object Ksp : Plugin {
+		override val project: String
+			get() = "com.google.devtools.ksp"
+		override val version: String
+			get() = Version.KSP
+	}
+
+	object HiltPlugin : Plugin {
+		override val project: String get() = "com.google.dagger.hilt.android"
+		override val version: String get() = Version.HILT
+	}
+
+	enum class Hilt : Dependency {
+		Android {
+			override val project: String get() = "hilt-android"
+		},
+		Compiler {
+			override val project: String get() = "hilt-compiler"
+		}
+		;
+
+		override val group: String get() = "com.google.dagger"
+		override val version: String get() = Version.HILT
+	}
+
 	enum class PlayServices : Dependency {
 		PlayServicesNearby {
 			override val project: String get() = "play-services-nearby"

@@ -1,0 +1,1 @@
+package mrpapermoon.whisper.entityclass User(	val cipher: ByteArray,	val id: String,	val name: String,)
