@@ -1,0 +1,1 @@
+package mrpapermoon.whisper.contacts.dbimport androidx.room.Databaseimport androidx.room.RoomDatabaseimport androidx.room.TypeConverters@Database(	entities = [ContactEntity::class],	version = 1,	exportSchema = false)@TypeConverters(RoomTypeConverters::class)abstract class ContactsDatabase : RoomDatabase() {	abstract fun contactDao(): ContactDao}

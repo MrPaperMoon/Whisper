@@ -1,0 +1,1 @@
+package mrpapermoon.whisper.navigationenum class NavigationTab {	MAIN, PROFILE, SETTINGS,}

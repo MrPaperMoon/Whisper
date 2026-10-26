@@ -12,7 +12,6 @@
 	<color name="primary_800">#8c4000</color>
 	<color name="primary_900">#8a1e00</color>
 
-	<color name="iconColor">@color/primary_200</color>
 <!-- Shades of #eeebde
 #eeebde
 #d6d3c7

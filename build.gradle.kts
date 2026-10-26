@@ -2,10 +2,11 @@
 plugins {
 	notate(Android.Application)
 	notate(Android.Library)
-	notate(JetBrains.Kotlin.PluginCompose)
+	notate(Google.HiltPlugin)
+	notate(Google.Ksp)
 	notate(JetBrains.Kotlin.Jvm)
+	notate(JetBrains.Kotlin.PluginCompose)
 	notate(JetBrains.Kotlin.PluginSerialization)
-	notate(Ksp)
 }
 
 allprojects {

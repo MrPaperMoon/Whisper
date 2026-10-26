@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
 	apply(Android.Library)
-	apply(Ksp)
+	apply(Google.Ksp)
 	apply(JetBrains.Kotlin.PluginSerialization)
 }
 
@@ -35,6 +35,9 @@ kotlin {
 }
 
 dependencies {
+	dependency(Google.Hilt.Android)
+	ksp(Google.Hilt.Compiler.dependencyNotation)
+
 	implementation(project(":entity"))
 	implementation(project(":tools"))
 

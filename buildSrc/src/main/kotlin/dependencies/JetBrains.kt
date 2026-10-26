@@ -6,7 +6,6 @@ interface JetBrains {
             override val project: String
                 get() = "org.jetbrains.kotlin.plugin.compose"
         },
-
         Jvm {
             override val project: String
                 get() = "org.jetbrains.kotlin.jvm"
